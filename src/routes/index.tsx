@@ -26,7 +26,7 @@ import partyMemoji from "@/assets/mercia-memoji-festa.png.asset.json";
 import smileMemoji from "@/assets/mercia-memoji-sorriso.png.asset.json";
 import heartsMemoji from "@/assets/mercia-memoji-coracoes.png.asset.json";
 import peaceMemoji from "@/assets/mercia-memoji-paz.png.asset.json";
-import discobolus from "@/assets/discobolus.png";
+import fullDiscobolus from "@/assets/discobolo-inteiro.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -136,7 +136,7 @@ function GraduationInvitation() {
 
           <section id="celebrar" className="story-section">
             <img src={smileMemoji.url} alt="" className="sticker sticker-smile" loading="lazy" width={489} height={440} />
-            <div className="symbol-orbit"><img src={discobolus} alt="Símbolo do Discóbolo" loading="lazy" width={768} height={768} /></div>
+            <div className="symbol-orbit"><img src={fullDiscobolus.url} alt="Discóbolo, símbolo da Educação Física" loading="lazy" width={768} height={1371} /></div>
             <p className="eyebrow">O grande dia</p>
             <h2>Movimento que<br />virou <em>conquista.</em></h2>
             <p>Entre desafios, aprendizados e muitos sonhos, chegou o momento de brindar uma nova fase. Sua presença fará esta celebração ainda mais especial.</p>
