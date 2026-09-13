@@ -183,8 +183,8 @@ button, input, textarea { letter-spacing: 0; }
 .intro-copy { max-width: 310px; margin: 18px auto 0; color: var(--muted-foreground); font-size: 13px; line-height: 1.7; }
 .scroll-cue { width: 35px; height: 35px; margin: 22px auto 0; display: grid; place-items: center; border-radius: 50%; color: var(--foreground); border: 1px solid var(--border); }.scroll-cue svg { width: 15px; }
 .story-section { position: relative; padding: 82px 34px 76px; text-align: center; background: oklch(0.115 0.008 145); border-top: 1px solid var(--border); }
-.symbol-orbit { width: 108px; height: 108px; margin: 0 auto 30px; display: grid; place-items: center; border-radius: 50%; background: color-mix(in oklab, var(--emerald-deep) 28%, transparent); border: 1px solid color-mix(in oklab, var(--gold) 30%, transparent); }
-.symbol-orbit img { width: 82px; height: 82px; object-fit: contain; }
+.symbol-orbit { width: 108px; height: 128px; margin: 0 auto 30px; display: grid; place-items: center; }
+.symbol-orbit img { width: 96px; height: 124px; object-fit: contain; }
 .story-section h2, .rsvp-section h2 { font-size: 42px; }.story-section > p:last-child, .rsvp-lead { color: var(--muted-foreground); font-size: 13px; line-height: 1.75; }
 .events-section { padding: 72px 24px; background: linear-gradient(180deg, var(--background), oklch(0.11 0.02 154)); }
 .section-heading { margin-bottom: 25px; }.events-section h2 { font-size: 42px; }
