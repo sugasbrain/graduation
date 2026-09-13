@@ -126,7 +126,6 @@ function GraduationInvitation() {
                 <img src={portrait.url} alt="Mércia Melo em sua formatura" className="portrait" width={1023} height={1537} />
               </div>
               <img src={heartsMemoji.url} alt="" className="sticker sticker-hearts" width={1502} height={1600} />
-              <div className="course-seal"><GraduationCap /><span>Educação<br />Física</span></div>
             </div>
             <p className="eyebrow">BACHAREL EM EDUCAÇÃO FÍSICA</p>
             <h1>Mércia<br /><em>Jaynne</em></h1>
