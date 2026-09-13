@@ -184,7 +184,7 @@ function GraduationInvitation() {
 
           <footer className="invite-footer">
             <img src={partyMemoji.url} alt="" className="sticker sticker-party" loading="lazy" width={1160} height={1600} />
-            <span className="footer-monogram">MM</span>
+            <span className="footer-monogram">MJ</span>
             <p>Com carinho, Mércia.</p>
             <Dialog>
               <DialogTrigger asChild>
