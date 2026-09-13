@@ -117,7 +117,7 @@ function GraduationInvitation() {
 
           <header className="intro-section">
             <div className="intro-topline">
-              <span>MM · 2026.1</span>
+              <span>19:00</span>
               <span className="intro-spark"><Sparkles />{`
 `}</span>
             </div>
