@@ -185,7 +185,7 @@ button, input, textarea { letter-spacing: 0; }
 .story-section { position: relative; padding: 126px 34px 76px; text-align: center; background: oklch(0.115 0.008 145); border-top: 1px solid var(--border); }
 .symbol-orbit { width: 108px; height: 128px; margin: 0 auto 30px; display: grid; place-items: center; }
 .symbol-orbit img { width: 96px; height: 124px; object-fit: contain; }
-.story-section h2, .rsvp-section h2 { font-size: 42px; }.story-section > p:last-child, .rsvp-lead { color: var(--muted-foreground); font-size: 13px; line-height: 1.75; }.story-section > p:last-child { margin-top: 28px; }
+.story-section h2, .rsvp-section h2 { font-size: 42px; }.story-section > p:last-child, .rsvp-lead { color: var(--muted-foreground); font-size: 13px; line-height: 1.75; }.story-section > p:last-child { margin-top: 20px; }
 .events-section { padding: 72px 24px; background: linear-gradient(180deg, var(--background), oklch(0.11 0.02 154)); }
 .section-heading { margin-bottom: 25px; }.events-section h2 { font-size: 42px; }
 .event-card { position: relative; display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 14px; padding: 20px; overflow: hidden; text-align: left; border: 1px solid var(--border); border-radius: 18px; background: color-mix(in oklab, var(--foreground) 5%, transparent); backdrop-filter: blur(18px); }
