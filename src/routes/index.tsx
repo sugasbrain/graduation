@@ -148,7 +148,8 @@ function GraduationInvitation() {
               <h2 id="eventos-title">Celebre comigo</h2>
             </div>
             <EventCard icon={<GraduationCap />} number="01" title="Colação de grau" />
-            <p className="pending-note"><Clock3 /> Data e endereço serão anunciados em breve.</p>
+            <p className="pending-note"><Clock3 />{`
+`}</p>
           </section>
 
           <section className="rsvp-section" aria-labelledby="rsvp-title">
