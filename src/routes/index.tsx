@@ -68,9 +68,10 @@ function GraduationInvitation() {
 
   async function handleRsvp(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const formElement = event.currentTarget;
     setSending(true);
     setFormError("");
-    const form = new FormData(event.currentTarget);
+    const form = new FormData(formElement);
     try {
       await sendRsvp({
         data: {
@@ -80,7 +81,7 @@ function GraduationInvitation() {
           partySize: Number(form.get("partySize") ?? 1),
         },
       });
-      event.currentTarget.reset();
+      formElement.reset();
       setSent(true);
     } catch {
       setFormError("Não conseguimos registrar agora. Tente novamente em instantes.");

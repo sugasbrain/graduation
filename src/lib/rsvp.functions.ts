@@ -33,7 +33,7 @@ function createPublicClient() {
 }
 
 export const submitRsvp = createServerFn({ method: "POST" })
-  .inputValidator((input) => rsvpSchema.parse(input))
+  .validator((input) => rsvpSchema.parse(input))
   .handler(async ({ data }) => {
     const supabase = createPublicClient();
     const { error } = await supabase.from("rsvps").insert({
