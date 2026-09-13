@@ -187,9 +187,10 @@ function GraduationInvitation() {
                     inputMode="numeric"
                     min={0}
                     max={10}
+                    step={1}
                     value={companionCount}
                     onChange={(event) => {
-                      const count = Math.min(10, Math.max(0, Number(event.target.value) || 0));
+                      const count = Math.min(10, Math.max(0, Math.floor(Number(event.target.value) || 0)));
                       setCompanionCount(count);
                       setCompanionNames((current) => Array.from({ length: count }, (_, index) => current[index] ?? ""));
                     }}
