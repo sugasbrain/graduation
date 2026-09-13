@@ -173,7 +173,7 @@ button, input, textarea { letter-spacing: 0; }
 .course-seal svg { margin: 0 auto 4px; width: 20px; color: var(--gold); }
 .sticker { position: absolute; z-index: 4; object-fit: contain; pointer-events: none; filter: drop-shadow(0 14px 20px color-mix(in oklab, var(--background) 65%, transparent)); animation: float 4.5s ease-in-out infinite; }
 .sticker-hearts { width: 92px; height: 92px; left: -38px; top: 12px; animation-delay: -1s; }
-.sticker-smile { width: 88px; height: 88px; top: -40px; right: -10px; }
+.sticker-smile { width: 108px; height: 108px; top: -50px; right: 8px; }
 .sticker-peace { width: 105px; height: 105px; top: -48px; left: 46px; animation-delay: -2.2s; }
 .sticker-party { width: 92px; height: 92px; top: -38px; right: 16px; animation-delay: -.8s; }
 @keyframes float { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-9px) rotate(2deg); } }
