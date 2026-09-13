@@ -8,8 +8,6 @@ import type { Database } from "@/integrations/supabase/types";
 const rsvpSchema = z.object({
   guestName: z.string().trim().min(2).max(100),
   phone: z.string().trim().max(30).optional(),
-  message: z.string().trim().max(500).optional(),
-  partySize: z.number().int().min(1).max(10),
 });
 
 function createPublicClient() {
@@ -39,8 +37,6 @@ export const submitRsvp = createServerFn({ method: "POST" })
     const { error } = await supabase.from("rsvps").insert({
       guest_name: data.guestName,
       phone: data.phone || null,
-      message: data.message || null,
-      party_size: data.partySize,
     });
     if (error) throw new Error("Não foi possível registrar sua presença agora.");
     return { ok: true as const };

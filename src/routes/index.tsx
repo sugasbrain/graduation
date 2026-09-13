@@ -11,7 +11,6 @@ import {
   LoaderCircle,
   LockKeyhole,
   MapPin,
-  PartyPopper,
   Sparkles,
   Users,
 } from "lucide-react";
@@ -20,7 +19,6 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { getAdminRsvps, submitRsvp } from "@/lib/rsvp.functions";
 import portrait from "@/assets/mercia-formatura.png.asset.json";
@@ -77,8 +75,6 @@ function GraduationInvitation() {
         data: {
           guestName: String(form.get("guestName") ?? ""),
           phone: String(form.get("phone") ?? ""),
-          message: String(form.get("message") ?? ""),
-          partySize: Number(form.get("partySize") ?? 1),
         },
       });
       formElement.reset();
@@ -151,8 +147,7 @@ function GraduationInvitation() {
               <h2 id="eventos-title">Celebre comigo</h2>
             </div>
             <EventCard icon={<GraduationCap />} number="01" title="Colação de grau" />
-            <EventCard icon={<PartyPopper />} number="02" title="Festa de formatura" />
-            <p className="pending-note"><Clock3 /> Datas e endereços serão anunciados em breve.</p>
+            <p className="pending-note"><Clock3 /> Data e endereço serão anunciados em breve.</p>
           </section>
 
           <section className="rsvp-section" aria-labelledby="rsvp-title">
@@ -174,19 +169,9 @@ function GraduationInvitation() {
                   <Label htmlFor="guestName">Seu nome</Label>
                   <Input id="guestName" name="guestName" required minLength={2} maxLength={100} placeholder="Como devemos chamar você?" />
                 </div>
-                <div className="field-row">
-                  <div className="field-group">
-                    <Label htmlFor="phone">Telefone <span>(opcional)</span></Label>
-                    <Input id="phone" name="phone" type="tel" maxLength={30} placeholder="(00) 00000-0000" />
-                  </div>
-                  <div className="field-group field-small">
-                    <Label htmlFor="partySize">Pessoas</Label>
-                    <Input id="partySize" name="partySize" type="number" min={1} max={10} defaultValue={1} />
-                  </div>
-                </div>
                 <div className="field-group">
-                  <Label htmlFor="message">Mensagem de carinho <span>(opcional)</span></Label>
-                  <Textarea id="message" name="message" maxLength={500} rows={4} placeholder="Deixe algumas palavras para a formanda..." />
+                  <Label htmlFor="phone">Telefone <span>(opcional)</span></Label>
+                  <Input id="phone" name="phone" type="tel" maxLength={30} placeholder="(00) 00000-0000" />
                 </div>
                 {formError && <p className="form-error" role="alert">{formError}</p>}
                 <Button className="rsvp-button" type="submit" disabled={sending}>
