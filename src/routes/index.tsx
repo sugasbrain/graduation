@@ -147,7 +147,8 @@ function GraduationInvitation() {
               <p className="eyebrow">Reserve este momento</p>
               <h2 id="eventos-title">Celebre comigo</h2>
             </div>
-            <EventCard icon={<GraduationCap />} number="01" title="Colação de grau" />
+            <EventCard icon={<GraduationCap />} number={`
+`} title="Colação de grau" />
             <p className="pending-note"><Clock3 />{`
 `}</p>
           </section>
