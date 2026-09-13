@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import {
   CalendarDays,
   Check,
@@ -241,7 +241,7 @@ function GraduationInvitation() {
   );
 }
 
-function EventCard({ icon, number, title }: { icon: React.ReactNode; number: string; title: string }) {
+function EventCard({ icon, number, title }: { icon: ReactNode; number: string; title: string }) {
   return (
     <article className="event-card">
       <div className="event-number">{number}</div>
