@@ -20,8 +20,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { supabase } from "@/integrations/supabase/client";
-import { getAdminRsvps, submitRsvp } from "@/lib/rsvp.functions";
+import { getAdminRsvps, submitRsvp, unlockAdminRsvps } from "@/lib/rsvp.functions";
 import portrait from "@/assets/mercia-formatura.png.asset.json";
 import partyMemoji from "@/assets/mercia-memoji-festa.png.asset.json";
 import smileMemoji from "@/assets/mercia-memoji-sorriso.png.asset.json";
@@ -47,7 +46,7 @@ type AdminGuest = {
   id: string;
   guest_name: string;
   phone: string | null;
-  message: string | null;
+  companion_names: string[];
   party_size: number;
   created_at: string;
 };
@@ -55,10 +54,12 @@ type AdminGuest = {
 function GraduationInvitation() {
   const sendRsvp = useServerFn(submitRsvp);
   const loadAdminRsvps = useServerFn(getAdminRsvps);
+  const unlockAdmin = useServerFn(unlockAdminRsvps);
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
   const [formError, setFormError] = useState("");
-  const [email, setEmail] = useState("");
+  const [companionCount, setCompanionCount] = useState(0);
+  const [companionNames, setCompanionNames] = useState<string[]>([]);
   const [password, setPassword] = useState("");
   const [adminError, setAdminError] = useState("");
   const [adminLoading, setAdminLoading] = useState(false);
@@ -76,9 +77,13 @@ function GraduationInvitation() {
         data: {
           guestName: String(form.get("guestName") ?? ""),
           phone: String(form.get("phone") ?? ""),
+          companionCount,
+          companionNames,
         },
       });
       formElement.reset();
+      setCompanionCount(0);
+      setCompanionNames([]);
       setSent(true);
     } catch {
       setFormError("Não conseguimos registrar agora. Tente novamente em instantes.");
@@ -91,19 +96,18 @@ function GraduationInvitation() {
     event.preventDefault();
     setAdminLoading(true);
     setAdminError("");
-    const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
-    if (error) {
-      setAdminError("E-mail ou senha inválidos.");
-      setAdminLoading(false);
-      return;
-    }
     try {
+      const unlocked = await unlockAdmin({ data: { password } });
+      if (!unlocked.ok) {
+        setAdminError("Senha inválida.");
+        return;
+      }
       const result = await loadAdminRsvps();
       setGuests(result.guests);
       setTotalPeople(result.totalPeople);
+      setPassword("");
     } catch {
-      setAdminError("Esta conta não tem acesso à lista.");
-      await supabase.auth.signOut();
+      setAdminError("Não foi possível abrir a lista agora.");
     } finally {
       setAdminLoading(false);
     }
@@ -174,6 +178,38 @@ function GraduationInvitation() {
                   <Label htmlFor="phone">Telefone <span>(opcional)</span></Label>
                   <Input id="phone" name="phone" type="tel" maxLength={30} placeholder="(00) 00000-0000" />
                 </div>
+                <div className="field-group">
+                  <Label htmlFor="companionCount">Quantidade de acompanhantes</Label>
+                  <Input
+                    id="companionCount"
+                    name="companionCount"
+                    type="number"
+                    inputMode="numeric"
+                    min={0}
+                    max={10}
+                    value={companionCount}
+                    onChange={(event) => {
+                      const count = Math.min(10, Math.max(0, Number(event.target.value) || 0));
+                      setCompanionCount(count);
+                      setCompanionNames((current) => Array.from({ length: count }, (_, index) => current[index] ?? ""));
+                    }}
+                  />
+                </div>
+                {companionNames.map((name, index) => (
+                  <div className="field-group companion-field" key={index}>
+                    <Label htmlFor={`companion-${index}`}>Nome do acompanhante {index + 1}</Label>
+                    <Input
+                      id={`companion-${index}`}
+                      name="companionNames"
+                      required
+                      minLength={2}
+                      maxLength={100}
+                      value={name}
+                      placeholder="Nome completo"
+                      onChange={(event) => setCompanionNames((current) => current.map((item, itemIndex) => itemIndex === index ? event.target.value : item))}
+                    />
+                  </div>
+                ))}
                 {formError && <p className="form-error" role="alert">{formError}</p>}
                 <Button className="rsvp-button" type="submit" disabled={sending}>
                   {sending ? <LoaderCircle className="spin" /> : <Heart />}
@@ -204,17 +240,15 @@ function GraduationInvitation() {
                         <article key={guest.id}>
                           <div><strong>{guest.guest_name}</strong><span>{guest.party_size} {guest.party_size === 1 ? "pessoa" : "pessoas"}</span></div>
                           {guest.phone && <p>{guest.phone}</p>}
-                          {guest.message && <blockquote>“{guest.message}”</blockquote>}
+                           {guest.companion_names.length > 0 && <p className="companion-list"><strong>Acompanhantes:</strong> {guest.companion_names.join(", ")}</p>}
                         </article>
                       ))}
                     </div>
                   </div>
                 ) : (
                   <form className="admin-form" onSubmit={handleAdminLogin}>
-                    <Label htmlFor="admin-email">E-mail</Label>
-                    <Input id="admin-email" type="email" required value={email} onChange={(event) => setEmail(event.target.value)} />
                     <Label htmlFor="admin-password">Senha</Label>
-                    <Input id="admin-password" type="password" required value={password} onChange={(event) => setPassword(event.target.value)} />
+                    <Input id="admin-password" type="password" required autoComplete="current-password" value={password} onChange={(event) => setPassword(event.target.value)} />
                     {adminError && <p className="form-error" role="alert">{adminError}</p>}
                     <Button type="submit" disabled={adminLoading}>{adminLoading ? <LoaderCircle className="spin" /> : <LockKeyhole />} Entrar</Button>
                   </form>
