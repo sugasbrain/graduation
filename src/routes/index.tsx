@@ -149,8 +149,6 @@ function GraduationInvitation() {
             </div>
             <EventCard icon={<GraduationCap />} number={`
 `} title="Colação de grau" />
-            <p className="pending-note"><Clock3 />{`
-`}</p>
           </section>
 
           <section className="rsvp-section" aria-labelledby="rsvp-title">
@@ -231,19 +229,22 @@ function GraduationInvitation() {
 }
 
 function EventCard({ icon, number, title }: { icon: ReactNode; number: string; title: string }) {
+  const mapsUrl = "https://www.google.com/maps/search/?api=1&query=Av.%20Sen.%20Salgado%20Filho%2C%203000%20-%20Lagoa%20Nova%2C%20Natal%20-%20RN%2C%2059066-800";
+
   return (
     <article className="event-card">
       <div className="event-number">{number}</div>
       <div className="event-icon">{icon}</div>
       <div className="event-content">
         <h3>{title}</h3>
-        <p><CalendarDays /> Data a confirmar</p>
-        <p><Clock3 /> Horário a confirmar</p>
-        <p><MapPin /> Local a confirmar</p>
+        <p><CalendarDays /> 21 de setembro de 2026</p>
+        <p><Clock3 /> 19h <span>(chegar com antecedência)</span></p>
+        <p><MapPin /> Reitoria da UFRN<br />Av. Sen. Salgado Filho, 3000 - Lagoa Nova, Natal - RN, 59066-800</p>
       </div>
       <div className="event-actions" aria-label={`Ações para ${title}`}>
-        <Button disabled variant="outline" size="sm"><MapPin /> Maps</Button>
-        <Button disabled variant="outline" size="sm"><CalendarDays /> Agenda</Button>
+        <Button asChild variant="outline" size="sm">
+          <a href={mapsUrl} target="_blank" rel="noreferrer"><MapPin /> Maps</a>
+        </Button>
       </div>
     </article>
   );
