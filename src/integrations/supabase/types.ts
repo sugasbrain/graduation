@@ -16,6 +16,7 @@ export type Database = {
     Tables: {
       rsvps: {
         Row: {
+          companion_names: string[]
           created_at: string
           guest_name: string
           id: string
@@ -25,6 +26,7 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          companion_names?: string[]
           created_at?: string
           guest_name: string
           id?: string
@@ -34,6 +36,7 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          companion_names?: string[]
           created_at?: string
           guest_name?: string
           id?: string
