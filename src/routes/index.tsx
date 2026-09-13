@@ -240,7 +240,7 @@ function EventCard({ icon, number, title }: { icon: ReactNode; number: string; t
         <p><CalendarDays /> 21 de setembro de 2026</p>
         <p><Clock3 /> 19h <span>(chegar com antecedência)</span></p>
         <p><MapPin />Auditório da Reitoria da UFRN</p>
-        <p><Shirt />Vestimenta: social/ esporte fino</p>
+        <p><Shirt />Traje: social ou esporte fino&nbsp;</p>
       </div>
       <div className="event-actions" aria-label={`Ações para ${title}`}>
         <Button asChild variant="outline" size="sm">
