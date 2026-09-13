@@ -238,11 +238,11 @@ function EventCard({ icon, number, title }: { icon: ReactNode; number: string; t
         <h3>{title}</h3>
         <p><CalendarDays /> 21 de setembro de 2026</p>
         <p><Clock3 /> 19h <span>(chegar com antecedência)</span></p>
-        <p><MapPin /> Reitoria da UFRN<br />Av. Sen. Salgado Filho, 3000 - Lagoa Nova, Natal - RN, 59066-800</p>
+        <p><MapPin />Reitoria da UFRN{"\n"}</p>
       </div>
       <div className="event-actions" aria-label={`Ações para ${title}`}>
         <Button asChild variant="outline" size="sm">
-          <a href={mapsUrl} target="_blank" rel="noreferrer"><MapPin /> Maps</a>
+          <a href={mapsUrl} target="_blank" rel="noreferrer"><MapPin />Como chegar lá&nbsp;</a>
         </Button>
       </div>
     </article>
