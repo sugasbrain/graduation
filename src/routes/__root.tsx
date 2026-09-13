@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Formatura de Mércia Melo" },
+      { title: "MJ - Colação de Grau" },
       { name: "description", content: "Convite de formatura de Mércia Melo em Educação Física." },
       { name: "author", content: "Mércia Melo" },
       { property: "og:title", content: "Formatura de Mércia Melo" },

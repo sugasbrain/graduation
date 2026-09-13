@@ -32,7 +32,7 @@ import fullDiscobolus from "@/assets/discobolo-inteiro.png.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Formatura de Mércia Melo | Educação Física" },
+      { title: "MJ - Colação de Grau" },
       { name: "description", content: "Convite para celebrar a formatura de Mércia Melo em Educação Física." },
       { property: "og:title", content: "Formatura de Mércia Melo" },
       { property: "og:description", content: "Uma conquista construída com força, propósito e coração." },
