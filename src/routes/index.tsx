@@ -33,8 +33,8 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "MJ - Colação de Grau" },
       { name: "description", content: "Convite para celebrar a formatura de Mércia Melo em Educação Física." },
-      { property: "og:title", content: "Formatura de Mércia Melo" },
-      { property: "og:description", content: "Uma conquista construída com força, propósito e coração." },
+      { property: "og:title", content: "Formatura de Mércia Jaynne" },
+      { property: "og:description", content: "Agora é hora de celebrar cada passo dessa jornada e a sua presença fará esta celebração ainda mais especial." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
